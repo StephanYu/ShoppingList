@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping List</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+
+  <script src="js/script.js"></script>
+</head>
+<body>
+  <div class="container_12">
+    <header class = "grid_12">
+      <img src="images/collectio-logo.png" alt="collectio-main-logo" id="main-logo">
+      <h3>online shopping companion</h3>
+    </header>
+    <main>
+      <section id="text-input" class="grid_12">
+        <form id="text-input-form">
+          <input type="text" name="add-item" id="add-item" placeholder="Add Item here">
+          <input type="number" name="quantity" id="quantity" min="1" placeholder="Qty">
+          <input list="measurement" name="measurement" id="measurement" placeholder="Unit">
+            <datalist id="measurement">
+              <option value="g">
+              <option value="kg">
+              <option value="oz">
+              <option value="lbs">
+              <option value="cup">
+            </datalist>
+          <input type="submit" name="submit" class="button" id="submit" value="Save">
+          <input type="reset" name="reset" class="button" id="reset" value="Cancel">
+        </form>
+        <!--Jquery UI autocomplete, buttons, tooltips, spinner/selectmenu -->
+      </section><!--end of text-input-->
+        
+      <section id="shopping-list" class="grid_12">
+        <div class="shopping-item" id="shopping-item1">
+          <p>Item 1</p>
+          <div class="checkbox">
+            <input type="checkbox" value="1" id="checkbox1"/>
+            <label for="checkbox1"></label>
+           </div>
+          <div class="note-button">
+            <input type="button" id="note-button1"/>
+            <label for="note-button1"></label>
+          </div>
+        </div>
+        <div class="shopping-item"> 
+          <p>Item 2</p>
+          <div class="checkbox">
+            <input type="checkbox" value="1" id="checkbox2"/>
+            <label for="checkbox2"></label>
+           </div>
+          <input type="button" value="Note">
+        </div>
+        <div class="shopping-item">
+          <p>Item 3</p>
+          <div class="checkbox">
+            <input type="checkbox" value="1" id="checkbox3"/>
+            <label for="checkbox3"></label>
+           </div>
+          <input type="button" value="Note">
+        </div>
+        <div class="sub-shopping-item">
+          <form id="sub-shopping-form">
+            <input type="text" name="Note" id="note" placeholder="Note">
+            <input type="date" id="date"></input>
+            <input type="submit" name="submit" id="submit2" value="Save">
+            <input type="reset" name="reset" id="reset2" value="Cancel">
+          </form>
+        </div>
+        <div class="shopping-item">
+          <p>Item 4</p>
+          <div class="checkbox">
+            <input type="checkbox" value="1" id="checkbox4"/>
+            <label for="checkbox4"></label>
+           </div>
+          <input type="button" value="Note">
+        </div>
+        <!--Jquery UI sortable list, accordion (notes button), datepicker-->
+      </section><!--end of shopping-list-->
+    </main>
+    <footer><small>&copy; Stephan Yu 2014</small></footer>
+  </div><!--end container_12-->
+</body>
+</html>

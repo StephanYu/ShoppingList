@@ -1,0 +1,445 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*------------------- END OF RESET ---------------------*/
+
+/* TEMPORARY AID. REMOVE AFTER USE. */
+
+* { 
+  outline: 1px solid black;
+}
+
+/*------------------- END OF TEMPORARY AID ---------------------*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Containers
+----------------------------------------------------------------------------------------------------*/
+.container_12 {
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12 {
+  display:inline;
+  float: left;
+  position: relative;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+/* Grid >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+
+.container_12 .grid_1 {
+  width:6.333%;
+}
+
+.container_12 .grid_2 {
+  width:14.667%;
+}
+
+.container_12 .grid_3 {
+  width:23.0%;
+}
+
+.container_12 .grid_4 {
+  width:31.333%;
+}
+
+.container_12 .grid_5 {
+  width:39.667%;
+}
+
+.container_12 .grid_6 {
+  width:48.0%;
+}
+
+.container_12 .grid_7 {
+  width:56.333%;
+}
+
+.container_12 .grid_8 {
+  width:64.667%;
+}
+
+.container_12 .grid_9 {
+  width:73.0%;
+}
+
+.container_12 .grid_10 {
+  width:81.333%;
+}
+
+.container_12 .grid_11 {
+  width:89.667%;
+}
+
+.container_12 .grid_12 {
+  width:100.0%;
+}
+
+/* Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+
+
+.container_12:after {    
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Main CSS
+----------------------------------------------------------------------------------------------------*/
+header, footer {
+
+  background-color: #11C1E9;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+
+}
+
+header h3 {
+  
+  font: 1.5em "Nanum Pen Script"; /*24px/16px*/
+  padding: 5px;
+}
+
+footer {
+
+  bottom: 0px;
+  height: 6em;
+}
+
+#main-logo {
+
+  margin: 1.25em auto 0px;/*20px/16px*/
+  width: 360px;
+  position: relative;
+
+}
+
+
+footer small {
+  
+  font: 0.875em "Nanum Pen Script", Helvetica, Arial, sans-serif; /*14px/16px*/
+  font-weight: bold;
+  position: relative;
+  top: 30%;
+}
+
+#text-input {
+
+  text-align: center;
+  height: 6.25em;/*100px/16px*/
+  position: relative;
+
+} 
+#text-input-form {
+    
+    
+    width: 80%;
+    height: 60%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    padding: 1em;
+    display: table;
+}
+
+#text-input-form #add-item {
+    width: 300px;
+    height: 34px;
+    margin-right: 5px;
+}
+#quantity, #measurement{
+    width: 50px;
+    height: 34px;
+    margin-right: 5px;
+}
+
+#text-input-form #submit {
+  
+  background: linear-gradient(#11C1E9, #49708f);
+  border: 1px;
+  border-color: #979797;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 8px 16px;
+  vertical-align: middle;
+  display: table-cell;
+  margin-right: 10px;
+  margin-left: 10px;
+  
+}
+
+#text-input-form #reset {
+  
+  background: linear-gradient(#50E3C2, #49708f);
+  border: 1px;
+  border-color: #979797;
+  border-radius: 5px;
+  color: #163850;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 8px 16px;
+  vertical-align: middle;
+  display: table-cell;
+  
+  
+  
+}
+
+#shopping-list input[type="button"] {
+  float: right;
+  margin-right: 4em;
+  /*visibility: hidden;*/
+  /*margin-top: 15px;
+  background: linear-gradient(#49708f, #293f50);
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 8px 16px;*/
+}
+.note-button label {
+  background-image: url("../images/Note-logo2.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position:center;
+}
+
+.shopping-item input[type="checkbox"] {
+  float: left;
+  visibility: hidden;
+  
+}
+
+.checkbox {
+  width: 25px;
+  margin: 20px;
+  position: relative;
+  float: left;
+}
+
+.checkbox label {
+  cursor: pointer;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: -5px;
+  left: 0;
+  background: #eee;
+  border:1px solid #163850;
+  border-radius: 5px;
+
+}
+
+.checkbox label:after {
+  opacity: 0.2;
+  content: '';
+  position: absolute;
+  width: 17px;
+  height: 9px;
+  background: transparent;
+  top: 6px;
+  left: 7px;
+  border: 3px solid #333;
+  border-top: none;
+  border-right: none;
+
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.checkbox label:hover::after {
+  opacity: 0.5;
+}
+
+.checkbox input[type=checkbox]:checked + label:after {
+  opacity: 1;
+}
+
+#shopping-list p {
+  display: inline;
+  margin-left: 4em;
+  line-height: 60px;
+  position: absolute;
+}
+#shopping-list {
+  
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.shopping-item {
+  height: 60px;
+  margin: 0 auto;
+  width: 80%;
+  position: relative;
+ 
+}
+
+#shopping-item1 {
+  background-color: #50E3C2;
+}
+
+.shopping-item p {
+
+  font-family: "Charcoal CY" ;
+  font-size: 24px;
+  color: #163850;
+}
+
+.sub-shopping-item {
+  height: 80px;
+  margin: 0 auto;
+  width: 80%;
+  position: relative;
+  text-align: center;
+
+}
+
+#sub-shopping-form {
+
+  width: 80%;
+  height: 50%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  padding: 1em;
+  display: table;
+}
+
+#note {
+  vertical-align: middle;
+  display: table-cell;
+  width: 300px;
+  height: 34px;
+  margin-right: 5px;
+}
+#date {
+  vertical-align: middle;
+  display: table-cell;
+  width: 150px;
+  height: 34px;
+  margin-right: 5px;
+}
+#submit2, #reset2 {
+  height: 34px;
+  margin-left: 10px;
+  background: linear-gradient(#49708f, #293f50);
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 8px 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
