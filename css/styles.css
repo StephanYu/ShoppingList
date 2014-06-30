@@ -284,6 +284,16 @@ footer small {
   background-position:center;
 }
 
+.fa-bars {
+  float: right;
+  font-size: 24px;
+  display: inline-block;
+  margin-right: 2em;
+  line-height: 60px;
+  
+
+}
+
 .shopping-item input[type="checkbox"] {
   float: left;
   visibility: hidden;
