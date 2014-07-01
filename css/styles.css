@@ -50,9 +50,9 @@ table {
 
 /* TEMPORARY AID. REMOVE AFTER USE. */
 
-* { 
+/** { 
   outline: 1px solid black;
-}
+}*/
 
 /*------------------- END OF TEMPORARY AID ---------------------*/
 
@@ -159,18 +159,32 @@ table {
 
 /* Main CSS
 ----------------------------------------------------------------------------------------------------*/
+@font-face {
+  font-family: 'NanumPen';
+  src: url('NanumPenScript-Regular.eot');
+  src: url('NanumPenScript-Regular.eot?#iefix') format('embedded-opentype'),
+       url('NanumPenScript-Regular.woff') format('woff'),
+       url('NanumPenScript-Regular.ttf') format('truetype'),
+       url('NanumPenScript-Regular.svg#NanumPen') format('svg');
+}
+
+.fontpro,.fontpro-35681 {
+  font-family: 'NanumPen',sans-serif;
+  font-size: 1.5em;/* 24px/16px */
+}
+
 header, footer {
 
   background-color: #11C1E9;
   text-align: center;
   position: fixed;
   width: 100%;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
 
 }
 
 header h3 {
   
-  font: 1.5em "Nanum Pen Script"; /*24px/16px*/
   padding: 5px;
 }
 
@@ -178,6 +192,8 @@ footer {
 
   bottom: 0px;
   height: 6em;
+  clear: both;
+  position: relative;
 }
 
 #main-logo {
@@ -191,7 +207,7 @@ footer {
 
 footer small {
   
-  font: 0.875em "Nanum Pen Script", Helvetica, Arial, sans-serif; /*14px/16px*/
+  font: 1em "Nanum Pen Script", Helvetica, Arial, sans-serif; /*16px/16px*/
   font-weight: bold;
   position: relative;
   top: 30%;
@@ -202,6 +218,7 @@ footer small {
   text-align: center;
   height: 6.25em;/*100px/16px*/
   position: relative;
+  /*border-bottom: 1px solid #eee;*/
 
 } 
 #text-input-form {
@@ -221,18 +238,19 @@ footer small {
     width: 300px;
     height: 34px;
     margin-right: 5px;
+    padding-left: 20px;
 }
 #quantity, #measurement{
     width: 50px;
     height: 34px;
     margin-right: 5px;
+    padding-left: 5px;
 }
 
-#text-input-form #submit {
+#text-input-form .button {
   
-  background: linear-gradient(#11C1E9, #49708f);
-  border: 1px;
-  border-color: #979797;
+  background: #11C1E9;
+  border: 1px solid #979797;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
@@ -241,16 +259,14 @@ footer small {
   padding: 8px 16px;
   vertical-align: middle;
   display: table-cell;
-  margin-right: 10px;
-  margin-left: 10px;
+  
   
 }
 
-#text-input-form #reset {
+#text-input-form .button:hover {
   
-  background: linear-gradient(#50E3C2, #49708f);
-  border: 1px;
-  border-color: #979797;
+  background: #50E3C2;
+  border: 1px solid #979797;
   border-radius: 5px;
   color: #163850;
   cursor: pointer;
@@ -259,39 +275,39 @@ footer small {
   padding: 8px 16px;
   vertical-align: middle;
   display: table-cell;
-  
-  
-  
+}
+
+#submit {
+  margin-right: 5px;
+  margin-left: 20px;
 }
 
 #shopping-list input[type="button"] {
   float: right;
   margin-right: 4em;
-  /*visibility: hidden;*/
-  /*margin-top: 15px;
-  background: linear-gradient(#49708f, #293f50);
-  border: 0;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  font-weight: bold;
-  padding: 8px 16px;*/
+  
 }
-.note-button label {
-  background-image: url("../images/Note-logo2.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position:center;
+#note-button1 {
+  float: right;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 50%;
+  margin-top: -20px;
+  margin-right: 4em;
 }
 
 .fa-bars {
   float: right;
-  font-size: 24px;
+  font-size: 30px;
   display: inline-block;
-  margin-right: 2em;
+  margin-right: 1.5em;
   line-height: 60px;
   
+}
 
+.fa-bars:hover {
+  color: #E5F3F3;
 }
 
 .shopping-item input[type="checkbox"] {
@@ -314,8 +330,8 @@ footer small {
   height: 30px;
   top: -5px;
   left: 0;
-  background: #eee;
-  border:1px solid #163850;
+  background: white;
+  border:2px solid #163850;
   border-radius: 5px;
 
 }
@@ -328,7 +344,7 @@ footer small {
   height: 9px;
   background: transparent;
   top: 6px;
-  left: 7px;
+  left: 5px;
   border: 3px solid #333;
   border-top: none;
   border-right: none;
@@ -356,8 +372,10 @@ footer small {
 #shopping-list {
   
   position: relative;
-  overflow: hidden;
+  overflow: scroll;
   vertical-align: middle;
+  border-top: 1px solid gray;
+  background-color: #eee;
 }
 
 .shopping-item {
@@ -365,10 +383,12 @@ footer small {
   margin: 0 auto;
   width: 80%;
   position: relative;
- 
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
-#shopping-item1 {
+.shopping-item:hover {
   background-color: #50E3C2;
 }
 
@@ -380,12 +400,15 @@ footer small {
 }
 
 .sub-shopping-item {
-  height: 80px;
+  height: 74px;
   margin: 0 auto;
   width: 80%;
   position: relative;
   text-align: center;
-
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+  background-color: #E5F3F3;
 }
 
 #sub-shopping-form {
@@ -406,6 +429,7 @@ footer small {
   width: 300px;
   height: 34px;
   margin-right: 5px;
+  padding-left: 20px;
 }
 #date {
   vertical-align: middle;
@@ -413,10 +437,11 @@ footer small {
   width: 150px;
   height: 34px;
   margin-right: 5px;
+  padding-left: 20px;
 }
 #submit2, #reset2 {
   height: 34px;
-  margin-left: 10px;
+  margin-left: 5px;
   background: linear-gradient(#49708f, #293f50);
   border: 0;
   border-radius: 5px;
