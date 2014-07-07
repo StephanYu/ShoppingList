@@ -5,8 +5,7 @@
   <title>Shopping List</title>
   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/styles.css">
-  <script src="https://code.jquery.com/jquery.min.js"></script>
-
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="js/script.js"></script>
 </head>
 <body>
@@ -35,54 +34,61 @@
       </section><!--end of text-input-->
       
       <section id="shopping-list" class="grid_12">
-        <div class="shopping-item" id="shopping-item1">
-          <p>Item 1</p>
+
+        <div class="shopping-item">
+          <p id="receptor"></p>
           <div class="checkbox">
             <input type="checkbox" value="1" id="checkbox1"/>
             <label for="checkbox1"></label>
-           </div>
+          </div>
            <i class="fa fa-bars"></i>
-        </div>
+        </div><!--end of shopping-item-->
+        
         <div class="shopping-item"> 
           <p>Item 2</p>
           <div class="checkbox">
             <input type="checkbox" value="1" id="checkbox2"/>
             <label for="checkbox2"></label>
-           </div>
+          </div>
           <i class="fa fa-bars"></i>
-        </div>
+        </div><!--end of shopping-item-->
+        
         <div class="shopping-item">
           <p>Item 3</p>
           <div class="checkbox">
             <input type="checkbox" value="1" id="checkbox3"/>
             <label for="checkbox3"></label>
-           </div>
+          </div>
           <i class="fa fa-bars"></i>
-        </div>
+        </div><!--end of shopping-item-->
+        
         <div class="sub-shopping-item">
-          <form id="sub-shopping-form">
-            <input type="text" name="Note" id="note" placeholder="Note">
-            <input type="date" id="date"></input>
-            <input type="submit" name="submit" id="submit2" value="Add">
-            <input type="reset" name="reset" id="reset2" value="Reset">
-          </form>
-        </div>
+            <form id="sub-shopping-form">
+              <input type="text" name="Note" id="note" placeholder="Note">
+              <input type="date" id="date"></input>
+              <i class="fa fa-plus"></i> 
+              <i class="fa fa-repeat"></i> 
+            </form>
+        </div><!--end of sub-shopping-item-->
+        
         <div class="shopping-item">
           <p>Item 4</p>
           <div class="checkbox">
             <input type="checkbox" value="1" id="checkbox4"/>
             <label for="checkbox4"></label>
-           </div>
+          </div>
           <i class="fa fa-bars"></i>
-        </div>
+        </div><!--end of shopping-item-->
+        
         <div class="shopping-item">
           <p>Item 5</p>
           <div class="checkbox">
             <input type="checkbox" value="1" id="checkbox5"/>
             <label for="checkbox5"></label>
-           </div>
+          </div>
           <i class="fa fa-bars"></i>
-        </div>
+        </div><!--end of shopping-item-->
+
         <!--Jquery UI sortable list, accordion (notes button), datepicker-->
       </section><!--end of shopping-list-->
     </main>

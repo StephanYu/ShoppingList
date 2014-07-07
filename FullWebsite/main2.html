@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping List</title>
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/styles2.css">
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="js/script.js"></script>
+</head>
+<body>
+  <div class="container_12">
+    <header class = "grid_12">
+      <img src="images/collectio-logo.png" alt="collectio-main-logo" id="main-logo">
+      <h3 class="fontpro">online shopping companion</h3>
+    </header>
+    <main>
+      <section id="text-input" class="grid_12">
+        <form id="text-input-form">
+          <input type="text" class="input-field" id="add-item" placeholder="Add Item here">
+          <input type="number" class="input-field" id="quantity" min="1" placeholder="Qty">
+          <input list="measurement-list" class="input-field" id="measurement" placeholder="Unit">
+            <datalist id="measurement-list">
+              <option value="g">
+              <option value="kg">
+              <option value="oz">
+              <option value="lbs">
+              <option value="cup">
+            </datalist>
+          <input type="submit" name="submit" class="button" id="submit" value="Add">
+          <input type="reset" name="reset" class="button" id="reset" value="Reset">
+        </form>
+      </section><!--end of text-input-->
+      
+      <section id="shopping-list" class="grid_12">
+
+      <!-- <div class="shopping-item-container">
+        <div class="shopping-item">
+          <p class="receptor">Item1</p>
+          <p class="receptor2">1kg</p>
+          <div class="checkbox">
+            <input type="checkbox" class="checkbox" value="1" id="checkbox"/>
+            <label for="checkbox"></label>
+          </div>
+          <i class="fa fa-trash-o"></i>
+          <i class="fa fa-bars"></i>
+        </div>
+        <div class="sub-shopping-item">
+            <form id="sub-shopping-form">
+              <input type="text" name="Note" class="note" placeholder="Note">
+              <input type="date" class="date"></input>
+              <i class="fa fa-plus"></i>
+              <i class="fa fa-repeat"></i> 
+            </form>
+            <p class="sub-shopping-notefield"></p>
+        </div>
+      </div> -->
+      
+      </section><!--end of shopping-list-->
+    </main>
+    <footer><small>&copy; Stephan Yu 2014</small></footer>
+  </div><!--end container_12-->
+</body>
+</html>

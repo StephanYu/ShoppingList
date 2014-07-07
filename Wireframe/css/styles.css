@@ -161,11 +161,11 @@ table {
 ----------------------------------------------------------------------------------------------------*/
 @font-face {
   font-family: 'NanumPen';
-  src: url('NanumPenScript-Regular.eot');
-  src: url('NanumPenScript-Regular.eot?#iefix') format('embedded-opentype'),
-       url('NanumPenScript-Regular.woff') format('woff'),
-       url('NanumPenScript-Regular.ttf') format('truetype'),
-       url('NanumPenScript-Regular.svg#NanumPen') format('svg');
+  src: url('../NanumPen/NanumPenScript-Regular.eot');
+  src: url('../NanumPen/NanumPenScript-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../NanumPen/NanumPenScript-Regular.woff') format('woff'),
+       url('../NanumPen/NanumPenScript-Regular.ttf') format('truetype'),
+       url('../NanumPen/NanumPenScript-Regular.svg#NanumPen') format('svg');
 }
 
 .fontpro,.fontpro-35681 {
@@ -253,12 +253,14 @@ footer small {
   border: 1px solid #979797;
   border-radius: 5px;
   color: #fff;
+  width: 70px;
   cursor: pointer;
   font-weight: bold;
   font-size: 1em;
-  padding: 8px 16px;
+  padding: 8px;
   vertical-align: middle;
   display: table-cell;
+  text-align: center;
   
   
 }
@@ -272,7 +274,7 @@ footer small {
   cursor: pointer;
   font-weight: bold;
   font-size: 1em;
-  padding: 8px 16px;
+  padding: 8px;
   vertical-align: middle;
   display: table-cell;
 }
@@ -310,6 +312,18 @@ footer small {
   color: #E5F3F3;
 }
 
+.fa-plus, .fa-repeat {
+  margin-left: 15px;
+  font-size: 22px;
+  line-height: 74px;
+  vertical-align: middle;
+  opacity: 0.7;
+}
+
+.fa-plus:hover, .fa-repeat:hover {
+  opacity: 1;
+}
+
 .shopping-item input[type="checkbox"] {
   float: left;
   visibility: hidden;
@@ -337,7 +351,7 @@ footer small {
 }
 
 .checkbox label:after {
-  opacity: 0.2;
+  opacity: 0;
   content: '';
   position: absolute;
   width: 17px;
@@ -439,7 +453,7 @@ footer small {
   margin-right: 5px;
   padding-left: 20px;
 }
-#submit2, #reset2 {
+/*#submit2, #reset2 {
   height: 34px;
   margin-left: 5px;
   background: linear-gradient(#49708f, #293f50);
@@ -450,7 +464,7 @@ footer small {
   font-weight: bold;
   padding: 8px 16px;
 }
-
+*/
 
 
 
