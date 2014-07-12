@@ -330,7 +330,7 @@ section, body {
   color: #163850;
 }
 
-.fa-plus, .fa-repeat {
+.fa-plus, .fa-repeat, .fa-minus {
   margin-left: 15px;
   font-size: 22px;
   line-height: 74px;
@@ -338,7 +338,7 @@ section, body {
   opacity: 0.7;
 }
 
-.fa-plus:hover, .fa-repeat:hover {
+.fa-plus:hover, .fa-repeat:hover, .fa-minus:hover {
   opacity: 1;
 }
 
