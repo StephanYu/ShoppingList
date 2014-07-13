@@ -137,6 +137,11 @@ $(document).ready(function() {
     $(".date").val('');
     $(".sub-shopping-notefield").text('');
     //QUESTION: How do I reset the value variable when I hit the reset button? How do I enter the scope of the previous function?
+    // A: you can't change the value of the variable on line 99 here. Variables declared inside functions are private in javascript.
+    // You could declare value in a scope shared by both these scripts, like var counter on line 23.
+    // Do you need to do anything? What is the problem when value is not reset?
+    // I think if we discuss that we will find different tactics to use that mean we don't need to reset the variable here.
+    // Resetting the DOM, as you have done on lines 136-138 above, should be enough.
   });
 
   //if click on bin button then remove the current shopping item
