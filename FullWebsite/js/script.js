@@ -124,8 +124,15 @@ $(document).ready(function() {
     )
   });
 
-  //if click on reset/repeat button make text and date input fields reset   QUESTION: Why does this button inherit the functionality of the submit2 button?
-  $('#shopping-list').on('click','.fa-repeat', function(){
+  //if click on reset/repeat button make text and date input fields reset
+  // QUESTION: Why does this button inherit the functionality of the submit2 button?
+  // A: the clickToggle function is capturing all clicks on the .sub-shopping-item
+  // if you click this repeat button before ever clicking the + icon, it does not run both
+  // once you click + and clicktoggle is setup, then it runs both
+  // Solution A: the answer I gave above to remove clicktoggle will resolve this issue
+  // Solution B: change line 103 so that clicktoggle only happens on the +/- icon.
+  // This is very complex since the HTML is replaced… I recommend solution A.
+  $('#shopping-list').on('click','.fa-repeat', function( event ){
     $(".note").val('');   
     $(".date").val('');
     $(".sub-shopping-notefield").text('');
