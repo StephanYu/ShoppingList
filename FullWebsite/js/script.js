@@ -62,8 +62,38 @@ $(document).ready(function() {
 
   //if click on submit2 (fa-plus) button toggle between two different functions using newly added clicktoggle function (at top of page).
   // QUESTION: Why is there a non-response only after the FIRST press of the button?
-  // A: let's log the clickToggle functions and find out. I suspect the functions are reversed.
+  // A: let's log the clickToggle functions and find out. I suspect the functions are reversed. No, that is not the problem.
+  // added logging for when .fa-plus is clicked. It appears that this happens:
+  // 1st click: runs the function below, which sets up the clickToggle functions to be run on *future* clicks
+  // 2nd click: runs clickToggle for the first time, so runs the 'expand' function
+  // 3rd click: runs clickToggle for the second time, runs the 'collapse' function, etc.
+  // I suggest an alternative strategy, without using clickToggle at all:
+  // 1. on .fa-plus, always run the expand steps. Part of this function replaces .fa-plus with .fa-minus
+  // 2. add another similar event handler for .fa-minus, like so:
+  //    $('#shopping-list').on('click','.fa-minus', function(){
+  //    make this run the collapse steps.
+  // here's a skeleton to start with:
+
+  /*
+
+  // click plus icon: expand sub item
   $('#shopping-list').on('click','.fa-plus', function(){
+    // 1)expand sub-shopping item
+    // 2)add input value to notefield
+    // 3)show div sub-shopping-notefield
+    // 4)change plus icon to minus icon
+  });
+
+  // click minus icon: collapse sub item
+  $('#shopping-list').on('click','.fa-minus', function(){
+    // 1)contract sub-shopping item
+    // 2)hide div sub-shopping-notefield
+    // 3)change minus icon to plus icon
+  });
+
+  */
+  $('#shopping-list').on('click','.fa-plus', function(){
+    console.log('click on plus icon');
     var note = $(this).closest(".sub-shopping-item").find(".note").val();
     var date = $(this).closest(".sub-shopping-item").find(".date").val();
     var value = note + " " + date;
