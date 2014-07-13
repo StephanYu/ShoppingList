@@ -3,18 +3,18 @@
 
 // place this before all code, outside of document ready.
 $.fn.clicktoggle = function(a, b) {
-    return this.each(function() {
-        var clicked = false;
-        $(this).bind("click", function() {
-            if (clicked) {
-                clicked = false;
-                return b.apply(this, arguments);
-            }
-            clicked = true;
-            return a.apply(this, arguments);
-        });
-    });
-  };
+  return this.each(function() {
+      var clicked = false;
+      $(this).bind("click", function() {
+          if (clicked) {
+              clicked = false;
+              return b.apply(this, arguments);
+          }
+          clicked = true;
+          return a.apply(this, arguments);
+      });
+  });
+};
 
 $(document).ready(function() {
   
@@ -67,33 +67,33 @@ $(document).ready(function() {
     //append div sub-shopping-notefield to sub-shopping-item
     $(this).closest(".sub-shopping-item").append("<div class='sub-shopping-notefield'></div>");
     $(this).closest(".sub-shopping-item").clicktoggle(
-        function() {
-          // 1)expand sub-shopping item
-          $(this).addClass("expand")
-          // 2)add input value to notefield
-                 .children(".sub-shopping-notefield").text(value)
-          // 3)show div sub-shopping-notefield
-                 .show();
-          // 4)change plus icon to minus icon
-          $(".fa-plus").replaceWith("<i class='fa fa-minus'></i>");
+      function() {
+        // 1)expand sub-shopping item
+        $(this).addClass("expand")
+        // 2)add input value to notefield
+        .children(".sub-shopping-notefield").text(value)
+        // 3)show div sub-shopping-notefield
+        .show();
+        // 4)change plus icon to minus icon
+        $(".fa-plus").replaceWith("<i class='fa fa-minus'></i>");
 
-        }, function() {
-          // 1)contract sub-shopping item
-          $(this).removeClass("expand")
-          // 2)hide div sub-shopping-notefield
-          $(this).children(".sub-shopping-notefield").hide();
-          // 3)change minus icon to plus icon
-          $(".fa-minus").replaceWith("<i class='fa fa-plus'></i>");
-        }
-      )
+      }, function() {
+        // 1)contract sub-shopping item
+        $(this).removeClass("expand")
+        // 2)hide div sub-shopping-notefield
+        $(this).children(".sub-shopping-notefield").hide();
+        // 3)change minus icon to plus icon
+        $(".fa-minus").replaceWith("<i class='fa fa-plus'></i>");
+      }
+    )
   });
 
   //if click on reset/repeat button make text and date input fields reset   QUESTION: Why does this button inherit the functionality of the submit2 button?
   $('#shopping-list').on('click','.fa-repeat', function(){
-        $(".note").val('');   
-        $(".date").val('');
-        $(".sub-shopping-notefield").text('');
-        //QUESTION: How do I reset the value variable when I hit the reset button? How do I enter the scope of the previous function?
+    $(".note").val('');   
+    $(".date").val('');
+    $(".sub-shopping-notefield").text('');
+    //QUESTION: How do I reset the value variable when I hit the reset button? How do I enter the scope of the previous function?
   });
 
   //if click on bin button then remove the current shopping item
@@ -103,4 +103,3 @@ $(document).ready(function() {
 
 
 });
-  
