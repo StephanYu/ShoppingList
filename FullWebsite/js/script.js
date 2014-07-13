@@ -60,7 +60,9 @@ $(document).ready(function() {
     
   // });
 
-  //if click on submit2 (fa-plus) button toggle between two different functions using newly added clicktoggle function (at top of page). QUESTION: Why is there a non-response only after the FIRST press of the button?
+  //if click on submit2 (fa-plus) button toggle between two different functions using newly added clicktoggle function (at top of page).
+  // QUESTION: Why is there a non-response only after the FIRST press of the button?
+  // A: let's log the clickToggle functions and find out. I suspect the functions are reversed.
   $('#shopping-list').on('click','.fa-plus', function(){
     var note = $(this).closest(".sub-shopping-item").find(".note").val();
     var date = $(this).closest(".sub-shopping-item").find(".date").val();
@@ -70,6 +72,7 @@ $(document).ready(function() {
     $(this).closest(".sub-shopping-item").append("<div class='sub-shopping-notefield'></div>");
     $(this).closest(".sub-shopping-item").clicktoggle(
       function() {
+        console.log('expand sub-shopping item');
         // 1)expand sub-shopping item
         $(this).addClass("expand")
         // 2)add input value to notefield
@@ -80,6 +83,7 @@ $(document).ready(function() {
         $(".fa-plus").replaceWith("<i class='fa fa-minus'></i>");
 
       }, function() {
+        console.log('contract sub-shopping-item');
         // 1)contract sub-shopping item
         $(this).removeClass("expand")
         // 2)hide div sub-shopping-notefield
