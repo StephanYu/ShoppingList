@@ -39,7 +39,9 @@ $(document).ready(function() {
   $('#shopping-list').on('click', ':checkbox', function( event ){
     $(this).closest('.shopping-item').children('p').toggleClass('strikethrough', this.checked );
     $(this).closest('.shopping-item-container').appendTo("#shopping-list")
-                                               .toggleClass("disabled"); //Is there a way to actually disable the item except for the checkbox??
+                                               .toggleClass("disabled");
+    //Is there a way to actually disable the item except for the checkbox??
+    // Answer: it looks like you already have this working, by using .closest('.shopping-item-container')
   });
   
   //if click on note logo then make submenu appear/disappear
