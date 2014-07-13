@@ -44,7 +44,7 @@ $(document).ready(function() {
     // Answer: it looks like you already have this working, by using .closest('.shopping-item-container')
   });
   
-  //if click on note logo then make submenu appear/disappear
+  //if click on note icon then make submenu appear/disappear
   $("#shopping-list").on('click', '.fa-bars', function(){
     $(this).closest(".shopping-item").next().toggleClass("hidden"); 
   });
