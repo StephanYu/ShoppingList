@@ -1,21 +1,4 @@
 
-//toggle() method signature was deprecated in jQuery 1.8 and removed in jQuery 1.9. As no alternatives are being offered, I found the suggested code below as an alternative solution. source: https://forum.jquery.com/topic/beginner-function-toggle-deprecated-what-to-use-instead.
-
-// place this before all code, outside of document ready.
-$.fn.clicktoggle = function(a, b) {
-  return this.each(function() {
-      var clicked = false;
-      $(this).bind("click", function() {
-          if (clicked) {
-              clicked = false;
-              return b.apply(this, arguments);
-          }
-          clicked = true;
-          return a.apply(this, arguments);
-      });
-  });
-};
-
 $(document).ready(function() {
   
   //if click on submit button 1) add value of input text entries to shopping-item div
@@ -50,15 +33,22 @@ $(document).ready(function() {
   });
 
   //if click submit2 (fa-plus) button then save value of note and date to sub-shopping item
-  // $('#shopping-list').on('click','.fa-plus', function(){
-  //   var note = $(this).closest(".sub-shopping-item").find(".note").val();
-  //   var date = $(this).closest(".sub-shopping-item").find(".date").val();
-  //   var value = note + " " + date;
-  //   $(this).closest(".sub-shopping-item").toggleClass("expand")
-  //                                        .append("<div class='sub-shopping-notefield'></div>")
-  //                                        .children(".sub-shopping-notefield").text(value);
+  $('#shopping-list').on('click','.fa-plus', function(){
+    var note = $(this).closest(".sub-shopping-item").find(".note").val();
+    var date = $(this).closest(".sub-shopping-item").find(".date").val();
+    var value = note + " " + date;
     
-  // });
+    $(this).closest(".sub-shopping-item").toggleClass("expand")
+                                         .append("<div class='sub-shopping-notefield'></div>")
+                                         .children(".sub-shopping-notefield").text(value);
+    $(this).replaceWith("<i class='fa fa-minus'></i>");
+  });
+  //if click submit2 (fa-minus) button
+  $('#shopping-list').on('click','.fa-minus', function(){
+    $(this).closest(".sub-shopping-item").toggleClass("expand")  
+                                         .children(".sub-shopping-notefield").hide();
+    $(this).replaceWith("<i class='fa fa-plus'></i>");
+  });
 
   //if click on submit2 (fa-plus) button toggle between two different functions using newly added clicktoggle function (at top of page).
   // QUESTION: Why is there a non-response only after the FIRST press of the button?
@@ -67,62 +57,38 @@ $(document).ready(function() {
   // 1st click: runs the function below, which sets up the clickToggle functions to be run on *future* clicks
   // 2nd click: runs clickToggle for the first time, so runs the 'expand' function
   // 3rd click: runs clickToggle for the second time, runs the 'collapse' function, etc.
-  // I suggest an alternative strategy, without using clickToggle at all:
-  // 1. on .fa-plus, always run the expand steps. Part of this function replaces .fa-plus with .fa-minus
-  // 2. add another similar event handler for .fa-minus, like so:
-  //    $('#shopping-list').on('click','.fa-minus', function(){
-  //    make this run the collapse steps.
-  // here's a skeleton to start with:
+  
+  // $('#shopping-list').on('click','.fa-plus', function(){
+  //   console.log('click on plus icon');
+  //   var note = $(this).closest(".sub-shopping-item").find(".note").val();
+  //   var date = $(this).closest(".sub-shopping-item").find(".date").val();
+  //   var value = note + " " + date;
 
-  /*
+  //   //append div sub-shopping-notefield to sub-shopping-item
+  //   $(this).closest(".sub-shopping-item").append("<div class='sub-shopping-notefield'></div>");
+  //   $(this).closest(".sub-shopping-item").clicktoggle(
+  //     function() {
+  //       console.log('expand sub-shopping item');
+  //       // 1)expand sub-shopping item
+  //       $(this).addClass("expand")
+  //       // 2)add input value to notefield
+  //       .children(".sub-shopping-notefield").text(value)
+  //       // 3)show div sub-shopping-notefield
+  //       .show();
+  //       // 4)change plus icon to minus icon
+  //       $(".fa-plus").replaceWith("<i class='fa fa-minus'></i>");
 
-  // click plus icon: expand sub item
-  $('#shopping-list').on('click','.fa-plus', function(){
-    // 1)expand sub-shopping item
-    // 2)add input value to notefield
-    // 3)show div sub-shopping-notefield
-    // 4)change plus icon to minus icon
-  });
-
-  // click minus icon: collapse sub item
-  $('#shopping-list').on('click','.fa-minus', function(){
-    // 1)contract sub-shopping item
-    // 2)hide div sub-shopping-notefield
-    // 3)change minus icon to plus icon
-  });
-
-  */
-  $('#shopping-list').on('click','.fa-plus', function(){
-    console.log('click on plus icon');
-    var note = $(this).closest(".sub-shopping-item").find(".note").val();
-    var date = $(this).closest(".sub-shopping-item").find(".date").val();
-    var value = note + " " + date;
-
-    //append div sub-shopping-notefield to sub-shopping-item
-    $(this).closest(".sub-shopping-item").append("<div class='sub-shopping-notefield'></div>");
-    $(this).closest(".sub-shopping-item").clicktoggle(
-      function() {
-        console.log('expand sub-shopping item');
-        // 1)expand sub-shopping item
-        $(this).addClass("expand")
-        // 2)add input value to notefield
-        .children(".sub-shopping-notefield").text(value)
-        // 3)show div sub-shopping-notefield
-        .show();
-        // 4)change plus icon to minus icon
-        $(".fa-plus").replaceWith("<i class='fa fa-minus'></i>");
-
-      }, function() {
-        console.log('contract sub-shopping-item');
-        // 1)contract sub-shopping item
-        $(this).removeClass("expand")
-        // 2)hide div sub-shopping-notefield
-        $(this).children(".sub-shopping-notefield").hide();
-        // 3)change minus icon to plus icon
-        $(".fa-minus").replaceWith("<i class='fa fa-plus'></i>");
-      }
-    )
-  });
+  //     }, function() {
+  //       console.log('contract sub-shopping-item');
+  //       // 1)contract sub-shopping item
+  //       $(this).removeClass("expand")
+  //       // 2)hide div sub-shopping-notefield
+  //       $(this).children(".sub-shopping-notefield").hide();
+  //       // 3)change minus icon to plus icon
+  //       $(".fa-minus").replaceWith("<i class='fa fa-plus'></i>");
+  //     }
+  //   )
+  // });
 
   //if click on reset/repeat button make text and date input fields reset
   // QUESTION: Why does this button inherit the functionality of the submit2 button?
@@ -136,12 +102,6 @@ $(document).ready(function() {
     $(".note").val('');   
     $(".date").val('');
     $(".sub-shopping-notefield").text('');
-    //QUESTION: How do I reset the value variable when I hit the reset button? How do I enter the scope of the previous function?
-    // A: you can't change the value of the variable on line 99 here. Variables declared inside functions are private in javascript.
-    // You could declare value in a scope shared by both these scripts, like var counter on line 23.
-    // Do you need to do anything? What is the problem when value is not reset?
-    // I think if we discuss that we will find different tactics to use that mean we don't need to reset the variable here.
-    // Resetting the DOM, as you have done on lines 136-138 above, should be enough.
   });
 
   //if click on bin button then remove the current shopping item
