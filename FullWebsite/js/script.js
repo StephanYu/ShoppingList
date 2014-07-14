@@ -3,18 +3,18 @@
 
 // place this before all code, outside of document ready.
 $.fn.clicktoggle = function(a, b) {
-    return this.each(function() {
-        var clicked = false;
-        $(this).bind("click", function() {
-            if (clicked) {
-                clicked = false;
-                return b.apply(this, arguments);
-            }
-            clicked = true;
-            return a.apply(this, arguments);
-        });
-    });
-  };
+  return this.each(function() {
+      var clicked = false;
+      $(this).bind("click", function() {
+          if (clicked) {
+              clicked = false;
+              return b.apply(this, arguments);
+          }
+          clicked = true;
+          return a.apply(this, arguments);
+      });
+  });
+};
 
 $(document).ready(function() {
   
@@ -39,10 +39,12 @@ $(document).ready(function() {
   $('#shopping-list').on('click', ':checkbox', function( event ){
     $(this).closest('.shopping-item').children('p').toggleClass('strikethrough', this.checked );
     $(this).closest('.shopping-item-container').appendTo("#shopping-list")
-                                               .toggleClass("disabled"); //Is there a way to actually disable the item except for the checkbox??
+                                               .toggleClass("disabled");
+    //Is there a way to actually disable the item except for the checkbox??
+    // Answer: it looks like you already have this working, by using .closest('.shopping-item-container')
   });
   
-  //if click on note logo then make submenu appear/disappear
+  //if click on note icon then make submenu appear/disappear
   $("#shopping-list").on('click', '.fa-bars', function(){
     $(this).closest(".shopping-item").next().toggleClass("hidden"); 
   });
@@ -58,8 +60,40 @@ $(document).ready(function() {
     
   // });
 
-  //if click on submit2 (fa-plus) button toggle between two different functions using newly added clicktoggle function (at top of page). QUESTION: Why is there a non-response only after the FIRST press of the button?
+  //if click on submit2 (fa-plus) button toggle between two different functions using newly added clicktoggle function (at top of page).
+  // QUESTION: Why is there a non-response only after the FIRST press of the button?
+  // A: let's log the clickToggle functions and find out. I suspect the functions are reversed. No, that is not the problem.
+  // added logging for when .fa-plus is clicked. It appears that this happens:
+  // 1st click: runs the function below, which sets up the clickToggle functions to be run on *future* clicks
+  // 2nd click: runs clickToggle for the first time, so runs the 'expand' function
+  // 3rd click: runs clickToggle for the second time, runs the 'collapse' function, etc.
+  // I suggest an alternative strategy, without using clickToggle at all:
+  // 1. on .fa-plus, always run the expand steps. Part of this function replaces .fa-plus with .fa-minus
+  // 2. add another similar event handler for .fa-minus, like so:
+  //    $('#shopping-list').on('click','.fa-minus', function(){
+  //    make this run the collapse steps.
+  // here's a skeleton to start with:
+
+  /*
+
+  // click plus icon: expand sub item
   $('#shopping-list').on('click','.fa-plus', function(){
+    // 1)expand sub-shopping item
+    // 2)add input value to notefield
+    // 3)show div sub-shopping-notefield
+    // 4)change plus icon to minus icon
+  });
+
+  // click minus icon: collapse sub item
+  $('#shopping-list').on('click','.fa-minus', function(){
+    // 1)contract sub-shopping item
+    // 2)hide div sub-shopping-notefield
+    // 3)change minus icon to plus icon
+  });
+
+  */
+  $('#shopping-list').on('click','.fa-plus', function(){
+    console.log('click on plus icon');
     var note = $(this).closest(".sub-shopping-item").find(".note").val();
     var date = $(this).closest(".sub-shopping-item").find(".date").val();
     var value = note + " " + date;
@@ -67,33 +101,47 @@ $(document).ready(function() {
     //append div sub-shopping-notefield to sub-shopping-item
     $(this).closest(".sub-shopping-item").append("<div class='sub-shopping-notefield'></div>");
     $(this).closest(".sub-shopping-item").clicktoggle(
-        function() {
-          // 1)expand sub-shopping item
-          $(this).addClass("expand")
-          // 2)add input value to notefield
-                 .children(".sub-shopping-notefield").text(value)
-          // 3)show div sub-shopping-notefield
-                 .show();
-          // 4)change plus icon to minus icon
-          $(".fa-plus").replaceWith("<i class='fa fa-minus'></i>");
+      function() {
+        console.log('expand sub-shopping item');
+        // 1)expand sub-shopping item
+        $(this).addClass("expand")
+        // 2)add input value to notefield
+        .children(".sub-shopping-notefield").text(value)
+        // 3)show div sub-shopping-notefield
+        .show();
+        // 4)change plus icon to minus icon
+        $(".fa-plus").replaceWith("<i class='fa fa-minus'></i>");
 
-        }, function() {
-          // 1)contract sub-shopping item
-          $(this).removeClass("expand")
-          // 2)hide div sub-shopping-notefield
-          $(this).children(".sub-shopping-notefield").hide();
-          // 3)change minus icon to plus icon
-          $(".fa-minus").replaceWith("<i class='fa fa-plus'></i>");
-        }
-      )
+      }, function() {
+        console.log('contract sub-shopping-item');
+        // 1)contract sub-shopping item
+        $(this).removeClass("expand")
+        // 2)hide div sub-shopping-notefield
+        $(this).children(".sub-shopping-notefield").hide();
+        // 3)change minus icon to plus icon
+        $(".fa-minus").replaceWith("<i class='fa fa-plus'></i>");
+      }
+    )
   });
 
-  //if click on reset/repeat button make text and date input fields reset   QUESTION: Why does this button inherit the functionality of the submit2 button?
-  $('#shopping-list').on('click','.fa-repeat', function(){
-        $(".note").val('');   
-        $(".date").val('');
-        $(".sub-shopping-notefield").text('');
-        //QUESTION: How do I reset the value variable when I hit the reset button? How do I enter the scope of the previous function?
+  //if click on reset/repeat button make text and date input fields reset
+  // QUESTION: Why does this button inherit the functionality of the submit2 button?
+  // A: the clickToggle function is capturing all clicks on the .sub-shopping-item
+  // if you click this repeat button before ever clicking the + icon, it does not run both
+  // once you click + and clicktoggle is setup, then it runs both
+  // Solution A: the answer I gave above to remove clicktoggle will resolve this issue
+  // Solution B: change line 103 so that clicktoggle only happens on the +/- icon.
+  // This is very complex since the HTML is replaced… I recommend solution A.
+  $('#shopping-list').on('click','.fa-repeat', function( event ){
+    $(".note").val('');   
+    $(".date").val('');
+    $(".sub-shopping-notefield").text('');
+    //QUESTION: How do I reset the value variable when I hit the reset button? How do I enter the scope of the previous function?
+    // A: you can't change the value of the variable on line 99 here. Variables declared inside functions are private in javascript.
+    // You could declare value in a scope shared by both these scripts, like var counter on line 23.
+    // Do you need to do anything? What is the problem when value is not reset?
+    // I think if we discuss that we will find different tactics to use that mean we don't need to reset the variable here.
+    // Resetting the DOM, as you have done on lines 136-138 above, should be enough.
   });
 
   //if click on bin button then remove the current shopping item
@@ -103,4 +151,3 @@ $(document).ready(function() {
 
 
 });
-  
