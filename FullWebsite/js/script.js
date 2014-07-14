@@ -23,13 +23,12 @@ $(document).ready(function() {
     $(this).closest('.shopping-item').children('p').toggleClass('strikethrough', this.checked );
     $(this).closest('.shopping-item-container').appendTo("#shopping-list")
                                                .toggleClass("disabled");
-    //Is there a way to actually disable the item except for the checkbox??
-    // Answer: it looks like you already have this working, by using .closest('.shopping-item-container')
+    
   });
   
   //if click on note icon then make submenu appear/disappear
   $("#shopping-list").on('click', '.fa-bars', function(){
-    $(this).closest(".shopping-item").next().toggleClass("hidden"); 
+    $(this).closest(".shopping-item").next().slideToggle().toggleClass("hidden"); 
   });
 
   //if click submit2 (fa-plus) button then save value of note and date to sub-shopping item
@@ -43,6 +42,7 @@ $(document).ready(function() {
                                          .children(".sub-shopping-notefield").text(value);
     $(this).replaceWith("<i class='fa fa-minus'></i>");
   });
+
   //if click submit2 (fa-minus) button
   $('#shopping-list').on('click','.fa-minus', function(){
     $(this).closest(".sub-shopping-item").toggleClass("expand")  
@@ -50,54 +50,7 @@ $(document).ready(function() {
     $(this).replaceWith("<i class='fa fa-plus'></i>");
   });
 
-  //if click on submit2 (fa-plus) button toggle between two different functions using newly added clicktoggle function (at top of page).
-  // QUESTION: Why is there a non-response only after the FIRST press of the button?
-  // A: let's log the clickToggle functions and find out. I suspect the functions are reversed. No, that is not the problem.
-  // added logging for when .fa-plus is clicked. It appears that this happens:
-  // 1st click: runs the function below, which sets up the clickToggle functions to be run on *future* clicks
-  // 2nd click: runs clickToggle for the first time, so runs the 'expand' function
-  // 3rd click: runs clickToggle for the second time, runs the 'collapse' function, etc.
-  
-  // $('#shopping-list').on('click','.fa-plus', function(){
-  //   console.log('click on plus icon');
-  //   var note = $(this).closest(".sub-shopping-item").find(".note").val();
-  //   var date = $(this).closest(".sub-shopping-item").find(".date").val();
-  //   var value = note + " " + date;
-
-  //   //append div sub-shopping-notefield to sub-shopping-item
-  //   $(this).closest(".sub-shopping-item").append("<div class='sub-shopping-notefield'></div>");
-  //   $(this).closest(".sub-shopping-item").clicktoggle(
-  //     function() {
-  //       console.log('expand sub-shopping item');
-  //       // 1)expand sub-shopping item
-  //       $(this).addClass("expand")
-  //       // 2)add input value to notefield
-  //       .children(".sub-shopping-notefield").text(value)
-  //       // 3)show div sub-shopping-notefield
-  //       .show();
-  //       // 4)change plus icon to minus icon
-  //       $(".fa-plus").replaceWith("<i class='fa fa-minus'></i>");
-
-  //     }, function() {
-  //       console.log('contract sub-shopping-item');
-  //       // 1)contract sub-shopping item
-  //       $(this).removeClass("expand")
-  //       // 2)hide div sub-shopping-notefield
-  //       $(this).children(".sub-shopping-notefield").hide();
-  //       // 3)change minus icon to plus icon
-  //       $(".fa-minus").replaceWith("<i class='fa fa-plus'></i>");
-  //     }
-  //   )
-  // });
-
   //if click on reset/repeat button make text and date input fields reset
-  // QUESTION: Why does this button inherit the functionality of the submit2 button?
-  // A: the clickToggle function is capturing all clicks on the .sub-shopping-item
-  // if you click this repeat button before ever clicking the + icon, it does not run both
-  // once you click + and clicktoggle is setup, then it runs both
-  // Solution A: the answer I gave above to remove clicktoggle will resolve this issue
-  // Solution B: change line 103 so that clicktoggle only happens on the +/- icon.
-  // This is very complex since the HTML is replaced… I recommend solution A.
   $('#shopping-list').on('click','.fa-repeat', function( event ){
     $(".note").val('');   
     $(".date").val('');

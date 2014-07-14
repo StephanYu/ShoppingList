@@ -212,7 +212,7 @@ footer {
 
 #main-logo {
   margin: 1.25em auto 0px;/*20px/16px*/
-  width: 360px;
+  width: 22.5em;  /*360px/16px*/
   position: relative;
 }
 
@@ -226,14 +226,12 @@ footer small {
 
 section, body {
   background-color: #e3e6ea;
-  /*#d0e5ed;*/
 }
 
 #text-input {
   text-align: center;
   height: 6.25em;/*100px/16px*/
   position: relative;
-  /*border-bottom: 1px solid #eee;*/
 } 
 
 #text-input-form {
@@ -310,7 +308,7 @@ section, body {
 
 .fa-bars {
   float: right;
-  font-size: 30px;
+  font-size: 1.875em; /*30px/16px*/
   display: inline-block;
   margin-right: 0.5em;
   line-height: 60px;
@@ -323,7 +321,7 @@ section, body {
 
 .fa-trash-o {
   float: right;
-  font-size: 27px;
+  font-size: 1.6875em; /*27px/16px*/
   display: inline-block;
   margin-right: 0.5em;
   line-height: 60px;
@@ -332,7 +330,7 @@ section, body {
 
 .fa-plus, .fa-repeat, .fa-minus {
   margin-left: 15px;
-  font-size: 22px;
+  font-size: 1.375em; /*22px/16px*/
   line-height: 74px;
   vertical-align: middle;
   opacity: 0.7;
@@ -421,7 +419,7 @@ section, body {
 
 .receptor, .receptor2 {
   font-family: "Charcoal CY" ;
-  font-size: 24px;
+  font-size: 1.5em; /*24px/16px*/
   color: #163850;
   display: inline;
   line-height: 60px;
@@ -441,24 +439,12 @@ section, body {
   text-decoration:line-through;
 }
 
-/*.shopping-item-disabled {
-  height: 60px;
-  margin: 0 auto;
-  width: 80%;
-  position: relative;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
-  border-bottom: 1px solid gray;
-  background-color: #eee;
-  opacity: 0.4;
-}*/
-
 .disabled {
   opacity: 0.4;
 }
 
 .sub-shopping-item {
-  height: 74px;
+  height: 4.625em; /*74px/16px*/
   margin: 0 auto;
   width: 80%;
   position: relative;
@@ -470,7 +456,7 @@ section, body {
 }
 
 .expand {
-  height: 148px;
+  height: 9.25em; /*148px/16px*/
 }
 
 .hidden {
