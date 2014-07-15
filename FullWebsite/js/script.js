@@ -11,7 +11,11 @@ $(document).ready(function() {
       var quant = $("#quantity").val();
       var measr = $("#measurement").val();
       var string_tot = value + " " + quant + measr;
-      $("#shopping-list").append("<div class='shopping-item-container'><div class='shopping-item'><p class='receptor'>" + string_tot + "</p><div class='checkbox'><input type='checkbox' value='1' id='" + checkbox + "'/><label for='" + checkbox + "' class='label'></label></div><i class='fa fa-trash-o'></i><i class='fa fa-bars'></i></div><div class='sub-shopping-item hidden'><form id='sub-shopping-form" + counter + "'><input type='text' name='Note' class='note' placeholder='Note'><input type='date' class='date'></input><i class='fa fa-plus'></i><i class='fa fa-repeat'></i></form><hr id='hr2'></div></div>");
+      $("#shopping-list").append("<div class='shopping-item-container'><div class='shopping-item'><p class='receptor'>" + string_tot + "</p><div class='checkbox'><input type='checkbox' value='1' id='" + checkbox + "'/><label for='" + checkbox + "' class='label'></label></div><i class='fa fa-trash-o'></i><i class='fa fa-bars'></i></div><div class='sub-shopping-item hidden'><form id='sub-shopping-form" + counter + "'><input type='text' name='Note' class='note' placeholder='Note'><input type='text' id='datepicker' class='date'></input><i class='fa fa-plus'></i><i class='fa fa-repeat'></i></form><hr id='hr2'></div></div>");
+      //JQuery UI widgets datepicker and selectmenu as HTML5 input['type=date'] and datalist are not being recognized by Safari
+      //Datepicker
+      $("#datepicker").datepicker();
+
       event.preventDefault();
       $("#add-item").val('');
       $("#quantity").val('');
